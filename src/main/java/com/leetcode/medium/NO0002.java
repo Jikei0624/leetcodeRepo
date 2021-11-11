@@ -9,40 +9,36 @@ public class NO0002 {
         ListNode(int val, ListNode next) { this.val = val; this.next = next; }
   }
 
-/*    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        if(l1 == null || l2 == null){
-            return null;
-        }
-        int l1Total = 0;
-        int l2Total = 0;
-        while (l1.next != null){
-            l1Total += l1.val * 10;
-            l1 = l1.next;
-        }
-        while (l2.next != null){
-            l2Total += l2.val * 10;
-            l2 = l2.next;
-        }
-        int total = l1Total + l2Total;
-        do{
-            ListNode listNode1 = new ListNode(total % 10, null);
-            total /= 10;
-            if(total > 0){
-                ListNode listNode2 = new ListNode(total % 10, null);
-                listNode1.next = listNode2;
-            }
-        } while ((total % 10) >= 10);
-        ListNode finalListNode = new ListNode();
-        return null;
-    }*/
-
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        if(l1 != null || l2 != null){
-            ListNode result = new ListNode();
-            do {
-                
-            } while (l1.next != null || l2.next != null);
+
+        ListNode result = new ListNode();
+            //pointer
+        ListNode pointer = result;
+        int carry = 0;
+        while (l1 != null || l2 != null){
+            int l1Val = 0;
+            int l2Val = 0;
+            int sum = 0;
+
+            if(l1 != null){
+                l1Val = l1.val;
+                l1 = l1.next;
+            }
+            if(l2 != null){
+                l2Val = l2.val;
+                l2 = l2.next;
+            }
+            sum = l1Val + l2Val + carry;
+            pointer.next = new ListNode(sum % 10);
+            pointer = pointer.next;
+            carry = 0;
+            if((sum / 10) >= 1) {
+                carry = 1;
+            }
         }
-        return null;
+        if (carry == 1){
+            pointer.next = new ListNode(carry);
+        }
+        return result.next;
     }
 }
