@@ -1,6 +1,6 @@
 # Leetcode Repository
 
-# This repo organized by three parts.
+# This repo is organized by three parts.
 
 - Easy
 - Medium
